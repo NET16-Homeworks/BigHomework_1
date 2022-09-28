@@ -98,7 +98,7 @@ namespace BigHomework_1.User
 
         }
 
-        public void RegisterUser(string email)
+        public void UserInfo(string email)
         {
             if (!IsUserExist(email))
             {

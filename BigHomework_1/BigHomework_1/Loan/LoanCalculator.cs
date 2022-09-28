@@ -14,7 +14,7 @@ namespace BigHomework_1.Loan
         {
             double creditMonthDurationDouble = creditMonthDuration;
             double loanBalance = creditAmount ;
-            double monthlyPayingAmount = 0;
+            double monthlyPayingAmount;
             double percentageRate = creditPercentage / 100 / 12;
 
             monthlyPayingAmount = Math.Round(creditAmount * (percentageRate + (percentageRate / (Math.Pow(1 + percentageRate, creditMonthDurationDouble) - 1))), 2);

@@ -17,7 +17,7 @@ while (true)
     Console.WriteLine(@"
 1. Add user
 2. Delete user
-3. Register user
+3. Show user info
 4. Apply for a loan
 5. Show user loan
 6. Exit
@@ -38,7 +38,7 @@ while (true)
             case "3":
                 Console.WriteLine("Enter user Email");
                 email = Console.ReadLine();
-                userService.RegisterUser(email);
+                userService.UserInfo(email);
                 break;
             case "4":
                 loanManager.SuggestLoan();
