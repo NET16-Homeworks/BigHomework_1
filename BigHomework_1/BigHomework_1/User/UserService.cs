@@ -18,65 +18,49 @@ namespace BigHomework_1.User
             string email = string.Empty;
             int age = -1;
 
-            bool isTaskCompletedSucess = false;
-            while (!isTaskCompletedSucess)
+            Console.WriteLine("1. Enter user Email");
+
+            email = Console.ReadLine();
+
+            if (IsUserExist(email))
             {
+                throw new ObjectExistsException(email);
+            }
+            if (String.IsNullOrWhiteSpace(email))
+            {
+                throw new IncorrectValueException<string>(email);
+            }
 
+            Console.WriteLine("2. Enter user first name");
 
-                Console.WriteLine("1. Enter user Email");
-                while (!isTaskCompletedSucess)
-                {
-                    email = Console.ReadLine();
+            firstName = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(firstName))
+            {
+                throw new IncorrectValueException<string>(firstName);
+            }
 
-                    if (IsUserExist(email))
-                    {
-                        throw new ObjectExistsException(email);
-                    }
-                    if (!String.IsNullOrWhiteSpace(email))
-                    {
-                        isTaskCompletedSucess = true;
-                    }
-                }
-                isTaskCompletedSucess = false;
+            Console.WriteLine("3. Enter user last name");
 
-                Console.WriteLine("2. Enter user first name");
-                while (!isTaskCompletedSucess)
-                {
-                    firstName = Console.ReadLine();
-                    if (!String.IsNullOrWhiteSpace(firstName))  isTaskCompletedSucess = true; 
-                }
-                isTaskCompletedSucess = false;
-
-                Console.WriteLine("3. Enter user last name");
-                while (!isTaskCompletedSucess)
-                {
-                    lastName = Console.ReadLine();
-                    if (!String.IsNullOrWhiteSpace(lastName))  isTaskCompletedSucess = true; 
-                }
-                isTaskCompletedSucess = false;
-
-                Console.WriteLine("4. Enter user age");
-                while (!isTaskCompletedSucess)
-                {
-                    if (int.TryParse(Console.ReadLine(), out age) && age > 0)
-                    {
-                        isTaskCompletedSucess = true;
-                    }              
-                }
-                isTaskCompletedSucess = false;
-                try
-                {
-                    userList.Add(new User(firstName, lastName, email, age));
-                    Console.WriteLine("Added new user!");
-                    isTaskCompletedSucess = true;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Something went wrong, please, try to register new user again");
-                    Console.WriteLine($"Exception - {ex.Message}");
-                }
+            lastName = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(lastName))
+            {
+                throw new IncorrectValueException<string>(lastName);
 
             }
+
+            Console.WriteLine("4. Enter user age");
+
+            if (int.TryParse(Console.ReadLine(), out age) || age <= 0)
+            {
+                throw new IncorrectValueException<int>(age);
+
+            }
+
+            userList.Add(new User(firstName, lastName, email, age));
+            Console.WriteLine("Added new user!");
+
+
+
         }
 
         public void DeleteUser(string email)

@@ -7,11 +7,10 @@ using BigHomework_1.Exceptions;
 
 namespace BigHomework_1.User
 {
-    
+
 
     internal class User
     {
-        private static UserService userService = new UserService();
 
         private int _age;
         private string _email;
@@ -28,24 +27,9 @@ namespace BigHomework_1.User
 
         public string LastName { get; set; }
 
-        public string Email 
-        {
-            get { return _email;  }
-            set 
-            {
-                if (userService.IsUserExist(value)) throw new ObjectExistsException(value);
-                else _email = value;
-            }
-        }
+        public string Email { get; set; }
 
-        public int Age
-        {
-            get { return _age; }
-            set 
-            {
-                if (value <= 0) throw new IncorrectValueException<int>(value);
-                else _age = value;
-            }
-        }
+        public int Age { get; set; }
+        
     }
 }
