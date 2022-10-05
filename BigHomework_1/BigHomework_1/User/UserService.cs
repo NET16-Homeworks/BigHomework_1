@@ -50,7 +50,7 @@ namespace BigHomework_1.User
 
             Console.WriteLine("4. Enter user age");
 
-            if (int.TryParse(Console.ReadLine(), out age) || age <= 0)
+            if (!int.TryParse(Console.ReadLine(), out age) || age <= 0)
             {
                 throw new IncorrectValueException<int>(age);
 

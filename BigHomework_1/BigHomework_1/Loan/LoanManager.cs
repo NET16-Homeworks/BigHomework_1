@@ -35,7 +35,7 @@ namespace BigHomework_1.Loan
 
             Console.WriteLine("2. Enter loan amount");
 
-            if (double.TryParse(Console.ReadLine(), out loanAmount) || loanAmount <= 0)
+            if (!double.TryParse(Console.ReadLine(), out loanAmount) || loanAmount <= 0)
             {
                 throw new IncorrectValueException<double>(loanAmount);
             }
@@ -43,7 +43,7 @@ namespace BigHomework_1.Loan
 
             Console.WriteLine("3. Enter loan term");
 
-            if (int.TryParse(Console.ReadLine(), out loanTerm) || loanTerm <= 0)
+            if (!int.TryParse(Console.ReadLine(), out loanTerm) || loanTerm <= 0)
             {
                 throw new IncorrectValueException<double>(loanTerm);
             }
@@ -51,7 +51,7 @@ namespace BigHomework_1.Loan
             Console.WriteLine("4. Enter loan rate (avaliable rates - 10%, 11,5%, 13,4%)");
             List<double> avaliableRates = new List<double>() { 10, 11.5, 13.4 };
 
-            if (double.TryParse(Console.ReadLine(), out loanRate) || !avaliableRates.Contains(loanRate))
+            if (!double.TryParse(Console.ReadLine(), out loanRate) || !avaliableRates.Contains(loanRate))
             {
                 throw new IncorrectValueException<double>(loanRate);
             }
