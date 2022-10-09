@@ -58,9 +58,6 @@ namespace BigHomework_1.User
 
             userList.Add(new User(firstName, lastName, email, age));
             Console.WriteLine("Added new user!");
-
-
-
         }
 
         public void DeleteUser(string email)

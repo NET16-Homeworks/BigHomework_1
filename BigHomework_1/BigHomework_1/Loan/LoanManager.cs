@@ -23,15 +23,15 @@ namespace BigHomework_1.Loan
 
             email = Console.ReadLine();
 
-            if (!userService.IsUserExist(email))
-            {
-                throw new ObjectNotFoundException(email);
-            }
             if (String.IsNullOrWhiteSpace(email))
             {
                 throw new IncorrectValueException<string>(email);
             }
 
+            if (!userService.IsUserExist(email))
+            {
+                throw new ObjectNotFoundException(email);
+            }
 
             Console.WriteLine("2. Enter loan amount");
 
