@@ -62,8 +62,6 @@ namespace BigHomework_1.LoanService
             {
                 _userLoans.Add(email, new List<Loan>(userloan));
                 Console.WriteLine("Your application has been sumitted. Please wait for our feedback within 1 working day.");
-                //вывести и юзера и его кредиты: создавать доп метод в юзерсервисе и лоанменеджере,через форич 
-                //выводить на консольего данные и креиты соотв-но, вызвать эти методы в мэйне
             }
 
             else

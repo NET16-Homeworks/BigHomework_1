@@ -6,7 +6,6 @@ using BigHomework_1.LoanService;
 
 UserServ newUser = new UserServ();
 //не находит юзера:
-User user = new User("Hanna", "Ivanova", "hijikataanya@gmail.com", 24);
 
 LoanManager loanManager = new LoanManager();
 

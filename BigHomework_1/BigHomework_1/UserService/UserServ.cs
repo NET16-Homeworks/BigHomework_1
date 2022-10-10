@@ -12,24 +12,32 @@ namespace BigHomework_1.UserService
     internal class UserServ
     {
 
-        private static List<User> _users = new List<User>();
+        private static List<User> _users = new List<User>
+        {
+            new User("Hanna", "Ivanova", "hijikataanya@gmail.com", 24)
+        };
 
         public void CreateUser()
         {
             //нкжно ли это переносить в програм и создавать там объект юзера?
             Console.WriteLine($"Please type your firstname:");
-            string FirstName = Console.ReadLine();
+            string firstName = Console.ReadLine();
             Console.WriteLine($"Please type your lastname:");
-            string LastName = Console.ReadLine();
+            string lastName = Console.ReadLine();
             Console.WriteLine($"Please type your e-mail:");
-            string Email = Console.ReadLine();
+            string email = Console.ReadLine();
+
+            if (!Validator.ValidateEmail(email))
+            {
+                throw new Exception("The e-mail is incorrect or already exists.");
+            }
 
             Console.WriteLine($"Please type your age:");
-            int Age = int.Parse(Console.ReadLine());
+            int age = int.Parse(Console.ReadLine());
 
-                if (FirstName is not null && LastName is not null && Email is not null && Age != 0)
+                if (firstName is not null && lastName is not null && email is not null && age != 0)
                 {
-                    _users.Add(new User(FirstName, LastName, Email, Age));
+                    _users.Add(new User(firstName, lastName, email, age));
                     Console.WriteLine("The user has been added");
                 }
 

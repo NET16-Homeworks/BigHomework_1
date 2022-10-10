@@ -10,7 +10,6 @@ namespace BigHomework_1.Classes
 {
     internal class User
     {
-        private static UserServ userService = new UserServ();
         private int _age;
         private string _email;
         public User(string firstName, string lastName, string email, int age)
@@ -24,31 +23,11 @@ namespace BigHomework_1.Classes
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        //add unique e-mail
         public string Email
         {
             get => _email;
-            set
-            {
-                if (value == " " && !value.Contains('@') && !value.Contains('.'))
-                {
-                    throw new Exception("The e-mail is incorrect or already exists.");
-                }
-
-                if (userService.DoesUserExist(value))
-                {
-                    throw new ObjectExistsException(value);                    
-                }
-
-                else
-                {
-                    _email = value;
-                }
-            }
+            set => _email = value;
     }
-
-
-        //unique e-mail?? how
 
         public int Age
         {
@@ -64,6 +43,19 @@ namespace BigHomework_1.Classes
                     _age = value;
                 }
             }
+        }
+    }
+
+    public static class Validator
+    {
+        public static bool ValidateEmail(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value) || !value.Contains('@') || !value.Contains('.'))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
