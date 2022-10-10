@@ -48,11 +48,9 @@ namespace BigHomework_1
                 if (userElement.Email == email)
                 {
                     _users.Remove(userElement);
+                    return;
                 }
-                else
-                {
-                    throw new ObjectNotFoundException(email);
-                }
+                throw new ObjectNotFoundException(email);
             }
         }
         public static void WriteUserInfo(string email)
