@@ -8,11 +8,9 @@ namespace BigHomework_1.User
 {
     internal class User
     {
-
         private int _age;
         private string _email;
-
-        private static UserService userService = new UserService();
+        
         public User(string firstname, string lastName, string email, int age)
         {
             FirstName = firstname;
@@ -20,7 +18,6 @@ namespace BigHomework_1.User
             Email = email;
             Age = age;
         }
-
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public  string Email
@@ -28,7 +25,7 @@ namespace BigHomework_1.User
             get { return _email; }
             set
             {
-                if (string.IsNullOrEmpty(value) || userService.UserExist(value))
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ObjectExistException(value);
                 }
@@ -52,9 +49,7 @@ namespace BigHomework_1.User
                 {
                     _age = value;
                 }
-                
             }
-
         }
     }
 }

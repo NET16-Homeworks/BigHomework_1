@@ -12,7 +12,6 @@ namespace BigHomework_1.Loan
         private double _loanAmount;
         private int _loanTerm;
         private double _loanRate;
-
         public Loan(double loanAmount, int loanTerm, double loanRate, string email)
         {
             LoanAmount = loanAmount;
@@ -36,7 +35,6 @@ namespace BigHomework_1.Loan
                 }
             }
         }
-
         public int LoanTerm
         {
             get { return _loanTerm; }

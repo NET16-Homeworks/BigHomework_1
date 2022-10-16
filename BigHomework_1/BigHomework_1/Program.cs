@@ -2,23 +2,28 @@
 using BigHomework_1.Loan;
 using BigHomework_1.User;
 using BigHomework_1.Loan;
+using System.Runtime.CompilerServices;
 
 class Program
 {
     static void Main(string[] args)
     {
         UserService userService = new UserService();
-
         LoanManager loanManager = new LoanManager();
-
+        
         while (true)
         {
             string email = String.Empty;
             string chosenKey = String.Empty;
+            
             Console.WriteLine("------------------CREDIT PROGRAM.V7Q.Edition------------------");
             Console.WriteLine("------------------ВЫБЕРИТЕ ОПЦИЮ------------------");
-            Console.WriteLine($"1. Добавить Юзера"+Environment.NewLine+"2. Показать информацию о Юзере" + Environment.NewLine + "3. Удалить Юзера" + Environment.NewLine + 
-                "4. Кредиты(виды)" + Environment.NewLine + "5. Показать информацию о кредите" + Environment.NewLine + "6. Выйти из приложения");
+            Console.WriteLine($"1. Добавить Юзера"+Environment.NewLine+
+                "2. Показать информацию о Юзере" + Environment.NewLine + 
+                "3. Удалить Юзера" + Environment.NewLine + 
+                "4. Кредиты(виды)" + Environment.NewLine + 
+                "5. Показать информацию о кредите" + Environment.NewLine + 
+                "6. Выйти из приложения");
             chosenKey = Console.ReadLine();
             try
             {
@@ -55,10 +60,10 @@ class Program
                 }
             }
             catch (Exception ex)
-            {
-                Console.WriteLine($"{ex.Message}");
+            { 
+                Console.WriteLine($"{ex.Message} + {Environment.NewLine} + ЖЕЛАЕТЕ ПРОДОЛЖИТЬ РАБОТУ С ПРИЛОЖЕНИЕМ? введите 7. Для выхода введите 6");
+                    //return;
             }
-
         }
     }
 }

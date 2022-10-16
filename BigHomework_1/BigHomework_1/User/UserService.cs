@@ -12,19 +12,15 @@ namespace BigHomework_1.User
     internal class UserService
     {
         private static List<User> usersList = new List<User>();
+        private static UserService userService = new UserService();
 
-     
         public void CreateUser()
         {
             string firstName = string.Empty;
             string lastName = string.Empty;
             string email = string.Empty;
             int age = -10;
-
             bool IsOkay = false;
-
-
-
             while (!IsOkay)
             {
                 Console.WriteLine("1. Введите пользовательский Email");
@@ -46,7 +42,6 @@ namespace BigHomework_1.User
                     }
                 }
                 IsOkay = false;
-
                 Console.WriteLine("2.Введите Имя пользователя");
                 while (!IsOkay)
                 {
@@ -62,7 +57,6 @@ namespace BigHomework_1.User
                     }
                 }
                 IsOkay = false;
-
                 Console.WriteLine("3. Введите фамилию пользователя");
                 while (!IsOkay)
                 {
@@ -77,7 +71,6 @@ namespace BigHomework_1.User
                     }
                 }
                 IsOkay = false;
-
                 Console.WriteLine("4. Введите возраст пользователя");
                 while (!IsOkay)
                 {
@@ -92,7 +85,6 @@ namespace BigHomework_1.User
                     }
                 }
                 IsOkay = false;
-
                 try
                 {
                     usersList.Add(new User(firstName, lastName, email, age));
@@ -106,7 +98,6 @@ namespace BigHomework_1.User
                 }
             }
         }
-
         public bool UserExist(string email)
         {
             foreach (var user in usersList)
@@ -116,7 +107,6 @@ namespace BigHomework_1.User
             }
             return false;
         }
-
         public void DeleteUser(string email)
         {
             if (!UserExist(email))
@@ -135,7 +125,6 @@ namespace BigHomework_1.User
             }
 
         }
-
         public void WriteUserInfo(string email)
         {
             if (!UserExist(email))
@@ -151,6 +140,14 @@ namespace BigHomework_1.User
                         $"Возраст: {user.Age}" + Environment.NewLine + $"Почта: {user.Email}");
                 }
             }
+        }
+        public bool IsUserExist(string email)
+        {
+            foreach (var user in usersList)
+            {
+                if (user.Email == email) return true;
+            }
+            return false;
         }
     }
 }
