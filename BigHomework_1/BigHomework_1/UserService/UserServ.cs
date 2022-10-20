@@ -11,15 +11,15 @@ namespace BigHomework_1.UserService
 {
     internal class UserServ
     {
-
         private static List<User> _users = new List<User>
         {
-            new User("Hanna", "Ivanova", "hijikataanya@gmail.com", 24)
+            new User("Hanna", "Ivanova", "hij@gmail.com", 24),
+            new User("gf", "fsdd", "nul@mail.ru", 25)
         };
 
         public void CreateUser()
         {
-            //нкжно ли это переносить в програм и создавать там объект юзера?
+            //нежно ли это переносить в програм и создавать там объект юзера?
             Console.WriteLine($"Please type your firstname:");
             string firstName = Console.ReadLine();
             Console.WriteLine($"Please type your lastname:");
@@ -29,7 +29,15 @@ namespace BigHomework_1.UserService
 
             if (!Validator.ValidateEmail(email))
             {
-                throw new Exception("The e-mail is incorrect or already exists.");
+                throw new Exception("The e-mail is incorrectly filled in.");
+            }
+
+            foreach (var user in _users)
+            {
+                if (user.Email == email)
+                {
+                    throw new ObjectExistsException(email);
+                }
             }
 
             Console.WriteLine($"Please type your age:");
@@ -54,7 +62,7 @@ namespace BigHomework_1.UserService
             User user = null;
             if (!DoesUserExist(email))
             {
-                throw new ObjectNotFoundException("There is no such user in the system");
+                throw new ObjectNotFoundException(email);
             }
             else
 

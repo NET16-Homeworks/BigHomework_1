@@ -42,30 +42,26 @@ namespace BigHomework_1.LoanService
             }
             Console.WriteLine("Please type the suitable loan rate.");
             var loanrate = double.Parse(Console.ReadLine());
-            foreach (var loanRate in _loanRate)
+
+            if (!_loanRate.Contains(loanrate))
             {
-                if (loanrate == _loanRate[0] || loanrate == _loanRate[1] || loanrate == _loanRate[2])
-                {
-                    break;
-                }
-                else
-                {
-                    throw new Exception("There is no such loan rate. Please use the existing one");
-                }
+                throw new ObjectNotFoundException("There is no such loan rate. Please use the existing one");
             }
-            userloan.Add(new Loan { LoanAmount = loanAmount, LoanRate = loanrate, LoanTerm = loanTerm });
-            LoanCalculator.Calculate(loanAmount, loanTerm, loanrate);
+            else
+            {
+                userloan.Add(new Loan { LoanAmount = loanAmount, LoanRate = loanrate, LoanTerm = loanTerm });
+                LoanCalculator.Calculate(loanAmount, loanTerm, loanrate);
+            }
 
             Console.WriteLine("If you agree with the conditions, please press yes; otherwise, no to");
             var response = Console.ReadLine();
             if (response == "yes")
             {
                 _userLoans.Add(email, new List<Loan>(userloan));
-                Console.WriteLine("Your application has been sumitted. Please wait for our feedback within 1 working day.");
+                Console.WriteLine("Your application has been submitted. Please wait for our feedback within 1 working day.");
             }
 
             else
-
             {
                 Console.WriteLine("Cancelling the app.");
             }

@@ -22,46 +22,53 @@ while (menu != 5)
 
     Console.WriteLine("Please select the item.");
     menu = int.Parse(Console.ReadLine());
-    switch (menu)
+    try
     {
-        case 1:
-            {
-                newUser.CreateUser();
-                break;
-            }
+        switch (menu)
+        {
+            case 1:
+                {
+                    newUser.CreateUser();
+                    break;
+                }
 
-        case 2:
-            {
-                Console.WriteLine($"Please type e-mail of the user you want to remove:");
-                email = Console.ReadLine();
-                newUser.DeleteUser(email);
-                break;
-            }
+            case 2:
+                {
+                    Console.WriteLine($"Please type e-mail of the user you want to remove:");
+                    email = Console.ReadLine();
+                    newUser.DeleteUser(email);
+                    break;
+                }
 
-        case 3:
-            {
-                Console.WriteLine($"Please type e-mail of the user you want to get info of:");
-                email = Console.ReadLine();
-                newUser.GetUserInfo(email);
-                break;
-            }
+            case 3:
+                {
+                    Console.WriteLine($"Please type e-mail of the user you want to get info of:");
+                    email = Console.ReadLine();
+                    newUser.GetUserInfo(email);
+                    break;
+                }
 
-        case 4:
-            {
-                loanManager.SuggestLoan();
-                break;
-            }
+            case 4:
+                {
+                    loanManager.SuggestLoan();
+                    break;
+                }
 
-        case 5:
-            {
-                Console.WriteLine("You quited the application");
-                break;
-            }
-        default:
-            {
-                Console.WriteLine("Wrong items chosen. Please try again");
-                break;
-            }
+            case 5:
+                {
+                    Console.WriteLine("You quited the application");
+                    break;
+                }
+            default:
+                {
+                    Console.WriteLine("Wrong items chosen. Please try again");
+                    break;
+                }
+        }
+    }
+    catch (Exception exception)
+    {
+        Console.WriteLine(exception.Message);
     }
 }
 

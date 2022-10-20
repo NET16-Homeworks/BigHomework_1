@@ -8,18 +8,24 @@ namespace BigHomework_1.Loans
 {
     internal static class LoanCalculator
     {
-        public static void Calculate(double creditSum, int creditMonths, double InterestRate)
+        public static void Calculate(double creditSum, int creditMonthsTerm, double interestRate)
         {
-            double percentInterestRate = InterestRate / 100 / 12;
-            double monthlyPayment = Math.Round((creditSum * (percentInterestRate /
-                ((Math.Pow(1 + percentInterestRate, creditMonths)) - 1)
-                + percentInterestRate)));
+            double percentInterestRate = interestRate / 100 / 12;
+            double doubleCreditMonthsTerm = creditMonthsTerm;
+            double creditRemainder = creditSum;
+            double monthlyPayment = Math.Round(creditSum * (percentInterestRate + (percentInterestRate /
+                (Math.Pow(1 + percentInterestRate, doubleCreditMonthsTerm) - 1))), 2);
 
-            double balanceCurrPeriod = creditSum - monthlyPayment;
-            double balanceNextPeriod = balanceCurrPeriod - monthlyPayment + balanceCurrPeriod * percentInterestRate;
-            
-            Console.WriteLine(monthlyPayment);
-            Console.WriteLine(balanceNextPeriod);
+            for (int i = 0; i <= creditMonthsTerm; i++)
+            {
+                creditRemainder = Math.Round(creditRemainder - monthlyPayment + creditRemainder * interestRate);
+                if (creditRemainder < 0)
+                {
+                    creditRemainder = 0;
+                }
+                Console.WriteLine($"Month {i} / Monthly payment {monthlyPayment}");
+                Console.WriteLine($" Remainder of credit sum for the next period: {creditRemainder}");
+            }
         }
     }
 }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BigHomework_1.Exceptions
 {
-        internal class ObjectNotFoundException : Exception
+    internal class ObjectNotFoundException : Exception
+    {
+        public ObjectNotFoundException(string objectName) : base($"The object wasn’t found")
         {
-            public ObjectNotFoundException(string objectName) : base($"The object wasn’t found")
-            {
 
-            }
         }
     }
+}
 
