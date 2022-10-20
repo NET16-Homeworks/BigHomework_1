@@ -18,7 +18,7 @@ namespace BigHomework_1.Loans
 
             for (int i = 0; i <= creditMonthsTerm; i++)
             {
-                creditRemainder = Math.Round(creditRemainder - monthlyPayment + creditRemainder * interestRate);
+                creditRemainder = Math.Round(creditRemainder - monthlyPayment + creditRemainder * interestRate, 2);
                 if (creditRemainder < 0)
                 {
                     creditRemainder = 0;
