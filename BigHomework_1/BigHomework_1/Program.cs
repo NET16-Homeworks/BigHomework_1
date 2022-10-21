@@ -4,19 +4,26 @@
 
 
 int response = 0;
-while (response != 5)
+while (response != 6)
 {
-    Console.WriteLine("Выберите действие (от 1 до 5):" + Environment.NewLine +
+    Console.WriteLine("Выберите действие (от 1 до 6):" + Environment.NewLine +
     "1. Добавить пользователя" + Environment.NewLine +
     "2. Удалить пользователя" + Environment.NewLine +
     "3. Получить информацию о пользователе" + Environment.NewLine +
     "4. Предложить кредит" + Environment.NewLine +
     "5. Получить информацию о кредитах пользователя" + Environment.NewLine +
     "6. Выход");
-
-    response = int.Parse(Console.ReadLine());
+    try
+    {
+        response = int.Parse(Console.ReadLine());
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
 
     Menu number_operation = (Menu)response;
+    
 
     switch (number_operation)
     {
@@ -57,7 +64,7 @@ while (response != 5)
             }
         default:
             {
-                Console.WriteLine("Не верно. Введите от 1 до 5");
+                Console.WriteLine("Не верно. Введите цифру от 1 до 6");
                 break;
             }
     }
