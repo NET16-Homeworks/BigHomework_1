@@ -27,8 +27,7 @@ namespace BigHomework_1.Services
             Console.Write("Введите возраст: ");
             user.Age = InputCheckMethods.IntReadAndCheck();
 
-            var ifUserExists = _users.Exists(q => q.Email == user.Email);
-            if (ifUserExists)
+            if (UserExists(user.Email))
             {
                 throw new ObjectExistsException(user.Email);
             }
