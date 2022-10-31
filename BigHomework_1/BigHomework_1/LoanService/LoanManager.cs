@@ -12,17 +12,17 @@ namespace BigHomework_1.LoanService
 {
     internal class LoanManager
     {
-        UserServ userServ = new UserServ();
-        private static Dictionary<string, List<Loan>> _userLoans = new Dictionary<string, List<Loan>>();
-        List<Loan> userloan = new List<Loan>();
-        double[] _loanRate = new double[] { 10, 11.5, 13.4 };
+        private static readonly UserService.UserService _userServ = new UserService.UserService();
+        private static readonly Dictionary<string, List<Loan>> _userLoans = new Dictionary<string, List<Loan>>();
+        private static readonly List<Loan> _userloan = new List<Loan>();
+        private static readonly double[] _loanRate = new double[] { 10, 11.5, 13.4 };
 
         public void SuggestLoan()
         {
             Console.WriteLine("Please insert your email:");
             string email = Console.ReadLine();
 
-            if (!userServ.DoesUserExist(email))
+            if (!_userServ.DoesUserExist(email))
             {
                 throw new ObjectNotFoundException(email);
             }
@@ -49,7 +49,7 @@ namespace BigHomework_1.LoanService
             }
             else
             {
-                userloan.Add(new Loan { LoanAmount = loanAmount, LoanRate = loanrate, LoanTerm = loanTerm });
+                _userloan.Add(new Loan { LoanAmount = loanAmount, LoanRate = loanrate, LoanTerm = loanTerm });
                 LoanCalculator.Calculate(loanAmount, loanTerm, loanrate);
             }
 
@@ -57,7 +57,7 @@ namespace BigHomework_1.LoanService
             var response = Console.ReadLine();
             if (response == "yes")
             {
-                _userLoans.Add(email, new List<Loan>(userloan));
+                _userLoans.Add(email, new List<Loan>(_userloan));
                 Console.WriteLine("Your application has been submitted. Please wait for our feedback within 1 working day.");
             }
 

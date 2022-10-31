@@ -9,7 +9,7 @@ using BigHomework_1.Exceptions;
 
 namespace BigHomework_1.UserService
 {
-    internal class UserServ
+    internal class UserService
     {
         private static List<User> _users = new List<User>
         {

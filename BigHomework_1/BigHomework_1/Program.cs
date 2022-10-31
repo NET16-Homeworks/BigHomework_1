@@ -4,7 +4,7 @@ using BigHomework_1.UserService;
 using BigHomework_1.LoanService;
 
 
-UserServ newUser = new UserServ();
+UserService newUser = new UserService();
 //не находит юзера:
 
 LoanManager loanManager = new LoanManager();
